@@ -9,10 +9,8 @@
 //         array(
 //             'labels' => array(
 //                 'name' => 'イベント情報',
-//                 'singular_name' => 'イベント情報'
 //             ),
 //         'public' => true,
-//         'menu_position' =>5,
 //         'has_archive' => true,
 //         'supports' => array('title','editor','excerpt','thumbnail','author')
 //         )
