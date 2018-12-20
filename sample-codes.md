@@ -47,7 +47,118 @@ CSSは子テーマのstyle.cssなどに記入してください。
 </div>
 ```
 
-## class
+### css
 
 ```
+
+/*-------------------------------------------*/
+/* スタッフ紹介
+/*-------------------------------------------*/
+.staff-outline {
+	display: table;
+}
+
+.staff-outline-text {
+	display: table-cell;
+	vertical-align: top;
+	width: 60%;
+}
+
+.staff-outline-text .staff-name {
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho","ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "serif";
+	border-bottom: none;
+	box-shadow: none;
+	font-size: 9vw;
+	margin-bottom: 1rem;
+	padding-bottom: 0;
+	line-height: 1.0;
+	border: none;
+	padding: 0;
+	background-color: transparent;
+}
+
+.staff-outline-text .staff-name::after {
+	border: none;
+}
+
+.staff-outline-text .staff-name span {
+	font-size: 14px;
+	display: block;
+	margin-top: 0.5em;
+	margin-left: 5px;
+	letter-spacing: 5px;
+	color: #008a32;
+}
+
+.staff-outline-text .staff-position {
+	font-size: 12px;
+	line-height: 1.6em;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho","ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "serif";
+}
+
+.staff-outline-text .staff-profile-title {
+	font-size: 16px;
+	padding-top: 0;
+	padding-left: 0;
+	padding-bottom: 2px;
+	margin-bottom: 1.2rem;
+	border-top: none;
+	border-bottom: 1px solid #ccc;
+}
+
+.staff-outline-text p {
+	font-size: 14px;
+}
+
+.staff-outline-photo img {
+	width: 80%;
+	margin: 0 0 0 auto;
+	display: block;
+	border: 4px solid #efefef;
+}
+
+.staff-profile-table {
+	margin-top: 2em;
+	margin-bottom: 80px;
+	border: none;
+}
+
+.staff-profile-table dl {
+	display: table;
+	width: 100%;
+}
+
+.staff-profile-table dt,
+.staff-profile-table dd {
+	display: table-cell;
+	border-bottom: 1px solid #ccc;
+	padding-left: 10px;
+	font-size: 14px;
+	padding-bottom: 4px;
+}
+
+.staff-profile-table dl {
+	margin: 0 0 1rem;
+}
+
+.staff-profile-table dt {
+	background: none;
+	font-weight: lighter;
+	border-left-width: 2px;
+	border-left-style: solid;
+	width: 30%;
+}
+
+.staff-profile-table dd {
+	border-left: none;
+	width: 70%;
+}
+
+@media (min-width: 768px) {
+
+.staff-outline-text .staff-name {
+	font-size: 5rem;
+}
+
+}
 ```
