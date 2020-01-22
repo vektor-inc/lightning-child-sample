@@ -7,8 +7,33 @@ CSSは子テーマのstyle.cssなどに記入してください。
 
 https://www.vektor-inc.co.jp/post/css_customize/
 
+---
 
+### セクションベースの制御
 
+```
+add_filter( 'lightning_get_the_class_names', 'my_lightning_add_class_baseSection', 16 );
+function my_lightning_add_class_baseSection( $class_names ) {
+	// if ( is_page ){
+		// セクションベースを有効にする
+		$class_names['siteContent'] = $class_names['siteContent'] . ' siteContent-base-on';
+		$class_names['mainSection'] = $class_names['mainSection'] . ' mainSection-base-on';
+		$class_names['sideSection'] = $class_names['sideSection'] . ' sideSection-base-on';
+	// }
+	return $class_names;
+}
+```
+
+### footer カラム数を4カラムに変更
+
+```
+// footer カラム数を4カラムに変更
+add_filter( 'lightning_footer_widget_area_count','my_footer_change' );
+function my_footer_change($footer_widget_area_count){
+    $footer_widget_area_count = 4;
+    return $footer_widget_area_count;
+}
+```
 
 ---
 

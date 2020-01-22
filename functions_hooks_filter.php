@@ -11,11 +11,7 @@
 /*-------------------------------------------*/
 /* footer カラム数を4カラムに変更
 /*-------------------------------------------*/
-// add_filter( 'lightning_footer_widget_area_count','my_footer_change' );
-// function my_footer_change($footer_widget_area_count){
-//     $footer_widget_area_count = 4;
-//     return $footer_widget_area_count;
-// }
+
 
 
 /*-------------------------------------------*/
