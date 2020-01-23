@@ -167,7 +167,7 @@ body_append ... 最後に追加される
 ```
 <?php
 // 最後に追加するHTMLを変数に入れておく
-$append_html  = '<table class="table-sm mt-2">';
+$append_html  = '<table class="table-sm mt-3">';
 $append_html .= '<tr><th>サイズ</th><td>' . esc_html( $post->size ) . '</td></tr>';
 $append_html .= '<tr><th>重量</th><td>' . esc_html( $post->weight ) . '</td></tr>';
 $append_html .= '</table>';
@@ -184,7 +184,99 @@ wp_kses_post( VK_Component_Posts::the_view( $post, $options ) );
 
 ---
 
-### footer カラム数を4カラムに変更
+### B. フックでループを改変する
+
+A では改変するループ部分をテンプレートファイルとして書きましたが、以下の方法を使えば functions.php などだけで改変する事ができます。
+
+```
+// 標準のループをオフにする
+add_filter( 'is_lightning_extend_loop', 'my_lightning_extend_loop_change' );
+function my_lightning_extend_loop_change( $change ) {
+
+	$post_type      = lightning_get_post_type();
+	$post_type_slug = $post_type['slug'];
+
+	// 改変する投稿タイプを指定
+	if ( $post_type_slug === 'post' ){
+		$change = true;
+	}
+	return $change;
+
+}
+
+// 改変するループを挿入する
+add_action( 'lightning_extend_loop', 'my_loop_layout_change' );
+function my_loop_layout_change() {
+
+	$post_type      = lightning_get_post_type();
+	$post_type_slug = $post_type['slug'];
+
+	// 変更したい投稿タイプだけ処理
+	if ( $post_type_slug === 'post' ) {
+		global $wp_query;
+		// ループ自体のオプション
+		$options_loop = array(
+			'class_loop_outer' => 'vk_posts-postType-' . $post_type_slug,
+		);
+		// 一つの投稿のオプション
+		$options = array(
+			'layout'                     => 'card',
+			// 'display_image'              => true,
+			// 'display_image_overlay_term' => true,
+			// 'display_excerpt'            => true,
+			// 'display_date'               => true,
+			// 'display_new'                => true,
+			// 'display_btn'                => true,
+			// 'image_default_url'          => false,
+			// 'overlay'                    => false,
+			// 'btn_text'                   => __( 'Read more', 'lightning' ),
+			// 'btn_align'                  => 'text-right',
+			// 'new_text'                   => __( 'New!!', 'lightning' ),
+			// 'new_date'                   => 7,
+			'class_outer'                => 'vk_post-col-xs-12 vk_post-col-sm-6 vk_post-col-md-6 vk_post-col-lg-6 vk_post-col-xl-6',
+			// 'class_title'                => '',
+			// 'body_prepend'               => '',
+			// 'body_append'                => '',
+		);
+		VK_Component_Posts::the_loop( $wp_query, $options, $options_loop );
+	}
+}
+```
+---
+
+### C. プロ版ユーザーがパラメーターを変更する
+
+これまでのカスタマイズは Lightning Pro なら管理画面から設定できるため必要ありませんが、カスタムフィールドの値を挿入したりする部分などは以下のように追加する事ができます。
+
+```
+add_filter( 'vk_post_option', 'my_vk_post_option_custom' );
+function my_vk_post_option_custom( $options ){
+
+	$post_type      = lightning_get_post_type();
+	$post_type_slug = $post_type['slug'];
+
+	// 改変する投稿タイプを指定
+	if ( $post_type_slug === 'post' ){
+
+		// 最後に追加するHTMLを変数に入れておく
+		$append_html  = '<table class="table-sm mt-3">';
+		$append_html .= '<tr><th>サイズ</th><td>' . esc_html( $post->size ) . '</td></tr>';
+		$append_html .= '<tr><th>重量</th><td>' . esc_html( $post->weight ) . '</td></tr>';
+		$append_html .= '</table>';
+
+		// 最後に追加するHTMLをオプションにセット
+		$options['body_append'] = $append_html;
+
+	}
+
+	return $options;
+}
+```
+
+
+---
+
+## footer カラム数を4カラムに変更
 
 ```
 // footer カラム数を4カラムに変更
