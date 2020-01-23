@@ -248,8 +248,10 @@ function my_loop_layout_change() {
 
 これまでのカスタマイズは Lightning Pro なら管理画面から設定できるため必要ありませんが、カスタムフィールドの値を挿入したりする部分などは以下のように追加する事ができます。
 
+* Lightning Pro 3.1.0 / Lightning 8.1.0 〜
+
 ```
-add_filter( 'vk_post_option', 'my_vk_post_option_custom' );
+add_filter( 'vk_post_options', 'my_vk_post_option_custom' );
 function my_vk_post_option_custom( $options ){
 
 	$post_type      = lightning_get_post_type();
