@@ -6,6 +6,11 @@ https://www.vektor-inc.co.jp/post/css_customize/
 
 ---
 
+## 投稿タイプ毎にサイドバーのファイルを変更する
+
+sidebar-__投稿タイプ名__.php のファイルを作れば適用される
+
+---
 
 ## ベースセクションを有効にする
 
@@ -275,6 +280,22 @@ function my_vk_post_option_custom( $options ){
 }
 ```
 
+---
+
+## ページ上部の表示タイトル名を変更
+
+```
+add_filter( 'lightning_pageTitCustom','my_page_title_custom' );
+function my_page_title_custom($pageTitle){
+	// 変更する条件を指定
+    if ( is_page() ){ // 固定ページの場合
+			// 変更後の名前
+      $pageTitle = '変更します';
+    }
+    return $pageTitle;
+}
+```
+
 
 ---
 
@@ -287,6 +308,25 @@ function my_footer_change($footer_widget_area_count){
     $footer_widget_area_count = 4;
     return $footer_widget_area_count;
 }
+```
+---
+
+## <head>タグ内に自分の追加したいタグを追加する
+
+※ JavaScript や css ファイルの場合は enque で読み込んだ方が良い
+
+```
+function my_add_wp_head_custom(){ ?>
+<!-- head内に書きたいコード -->
+<?php }
+add_action( 'wp_head', 'my_add_wp_head_custom',1);
+```
+
+```
+function my_add_wp_footer_custom(){ ?>
+<!-- footerに書きたいコード -->
+<?php }
+add_action( 'wp_footer', 'my_add_wp_footer_custom', 1 );
 ```
 
 ---
