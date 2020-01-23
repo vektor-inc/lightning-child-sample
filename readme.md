@@ -266,6 +266,7 @@ function my_vk_post_option_custom( $options ){
 	if ( $post_type_slug === 'post' ){
 
 		// 最後に追加するHTMLを変数に入れておく
+		global $post;
 		$append_html  = '<table class="table-sm mt-3">';
 		$append_html .= '<tr><th>サイズ</th><td>' . esc_html( $post->size ) . '</td></tr>';
 		$append_html .= '<tr><th>重量</th><td>' . esc_html( $post->weight ) . '</td></tr>';
