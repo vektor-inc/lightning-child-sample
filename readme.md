@@ -1,3 +1,7 @@
+このファイルの最新版は下記になります。
+
+https://github.com/vektor-inc/lightning-child-sample
+
 ## 簡単な見た目の調整は下記を参考にしてください
 
 全てのWordPressテーマで使える！デザインをピンポイントで変更する方法 〜親テーマのCSSは書き換えないで
@@ -103,7 +107,7 @@ wp_kses_post( VK_Component_Posts::the_view( $post, $options ) );
 
 #### A-3-2-1. カラム制御の有効化
 
-まずカラムを有効にするためにはループの外側の要素のclass名を vk_posts に改変する必要がある
+まずカラムを有効にするためにはループの外側の要素のclass名を vk_posts に改変する必要があるので下記のコードで改変する
 
 ```
 add_filter( 'lightning_get_the_class_names', 'my_lightning_class_change_postList', 16 );
@@ -198,6 +202,7 @@ A では改変するループ部分をテンプレートファイルとして書
 add_filter( 'is_lightning_extend_loop', 'my_lightning_extend_loop_change' );
 function my_lightning_extend_loop_change( $change ) {
 
+	// 現在のページの投稿タイプを取得
 	$post_type      = lightning_get_post_type();
 	$post_type_slug = $post_type['slug'];
 
@@ -213,6 +218,7 @@ function my_lightning_extend_loop_change( $change ) {
 add_action( 'lightning_extend_loop', 'my_loop_layout_change' );
 function my_loop_layout_change() {
 
+	// 現在のページの投稿タイプを取得
 	$post_type      = lightning_get_post_type();
 	$post_type_slug = $post_type['slug'];
 
@@ -259,6 +265,7 @@ function my_loop_layout_change() {
 add_filter( 'vk_post_options', 'my_vk_post_option_custom' );
 function my_vk_post_option_custom( $options ){
 
+	// 現在のループの投稿タイプを取得
 	$post_type      = lightning_get_post_type();
 	$post_type_slug = $post_type['slug'];
 
