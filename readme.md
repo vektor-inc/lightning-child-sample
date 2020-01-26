@@ -266,16 +266,13 @@ function my_loop_layout_change() {
 add_filter( 'vk_post_options', 'my_vk_post_option_custom' );
 function my_vk_post_option_custom( $options ){
 
-	// 現在のループの投稿タイプを取得
-	$post_type      = lightning_get_post_type();
-	$post_type_slug = $post_type['slug'];
+	global $post;
 
 	// 改変する投稿タイプを指定
-	if ( $post_type_slug === 'post' ){
+	if ( $post->post_type === 'post' ){
 
 		// 最後に追加するHTMLを変数に入れておく。
 		// ここではカスタムフィールド size と weight の値を取得している。
-		global $post;
 		$append_html  = '<table class="table-sm mt-3">';
 		$append_html .= '<tr><th>サイズ</th><td>' . esc_html( $post->size ) . '</td></tr>';
 		$append_html .= '<tr><th>重量</th><td>' . esc_html( $post->weight ) . '</td></tr>';
