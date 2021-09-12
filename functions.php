@@ -12,7 +12,7 @@
  */
 
 // 独自のCSSファイル（assets/css/）を読み込む場合は true に変更してください.
-$my_lightning_additional_css = true;
+$my_lightning_additional_css = false;
 
 if ( $my_lightning_additional_css ) {
 	// 公開画面側のCSSの読み込み.
