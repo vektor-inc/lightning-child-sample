@@ -1,0 +1,12 @@
+{
+  "core": null,
+  "themes": [
+    ".",
+    "vektor-inc/lightning"
+  ],
+  "plugins": [
+    "vektor-inc/vk-all-in-one-expansion-unit",
+    "vektor-inc/vk-blocks",
+    "vektor-inc/vk-block-patterns"
+  ]
+}

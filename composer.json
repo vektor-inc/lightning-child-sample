@@ -1,0 +1,8 @@
+{
+    "name": "vektor/lightning-child-sample",
+    "require-dev": {
+        "sirbrillig/phpcs-variable-analysis": "^2.10",
+        "wp-phpunit/wp-phpunit": "^5.4",
+        "phpcompatibility/phpcompatibility-wp": "^2.1"
+    }
+}
