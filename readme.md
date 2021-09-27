@@ -19,3 +19,14 @@ assets/_scss/ ディレクトリの監視・コンパイル
 ```
 npm run watch
 ```
+
+
+## PHPUnit test（開発者向け）
+
+```
+composer install
+wp-env start
+npm run phpunit
+```
+
+※ ディレクトリ名・ファイル名を変更した場合は package.json 及び tests/bootstrap.php にディレクトリ名・ファイル名の記述があるので変更してください。
