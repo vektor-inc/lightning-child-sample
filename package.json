@@ -12,7 +12,7 @@
     "rimraf:css": "npx rimraf assets/_scss/*.css",
     "build:css": "run-s sass postcss:all rimraf:css",
     "watch": "nodemon -e scss --watch assets/_scss -x \"npm run build:css\"",
-    "copy": "cpx './**/*' ./dist/lightning-child-sample --include-empty-dirs",
+    "copy": "cpx './**/*' ./dist/lightning-child-sample --include-empty-dirs && cpx './.wp-env.json' ./dist/lightning-child-sample",
     "clean": "rimraf ./dist/lightning-child-sample/dist && rimraf ./dist/lightning-child-sample/node_modules",
     "dist": "run-s copy clean",
     "phpunit": "wp-env run phpunit \"phpunit -c /var/www/html/wp-content/themes/lightning-child-sample/phpunit.xml.dist --verbose\""
